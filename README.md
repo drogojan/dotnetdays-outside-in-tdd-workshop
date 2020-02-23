@@ -1,2 +1,4 @@
-# dotnetdays-outside-in-tdd-workshop
-Outside-In TDD Workshop with ASP.NET Core and EF Core for dotnetdays 2020 conference
+# Outside-In TDD Workshop with ASP.NET Core and EF Core
+
+More details on the dotnetdays 2020 workshop [page](https://dotnetdays.ro/workshops/outside-in-tdd)
+
