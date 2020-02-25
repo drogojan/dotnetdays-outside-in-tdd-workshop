@@ -36,3 +36,7 @@ The client app should open in the default browser on the http://localhost:3000 a
 ## Slides
 
 - [Slides](https://1drv.ms/p/s!AsCmpNilWAlAia4rFapFVlpyzMpsjQ?e=i3bhVP)
+
+## Finished solution
+
+[Check my Github repo](https://github.com/drogojan/outside-in-tdd-workshop/tree/clean-architecture)
