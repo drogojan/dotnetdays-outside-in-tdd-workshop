@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OpenChat.Infrastructure\OpenChat.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Core\OpenChat.Common\OpenChat.Common.csproj" />
     <ProjectReference Include="..\..\Core\OpenChat.Application\OpenChat.Application.csproj" />

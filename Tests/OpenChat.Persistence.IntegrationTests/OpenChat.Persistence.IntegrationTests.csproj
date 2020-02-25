@@ -19,4 +19,10 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Core\OpenChat.Domain\OpenChat.Domain.csproj" />
+    <ProjectReference Include="..\..\Src\Infrastructure\OpenChat.Persistence\OpenChat.Persistence.csproj" />
+    <ProjectReference Include="..\OpenChat.Test.Infrastructure\OpenChat.Test.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

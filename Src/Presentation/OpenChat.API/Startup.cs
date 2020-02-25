@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,10 +5,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OpenChat.Application.Users;
+using OpenChat.Common;
+using OpenChat.Infrastructure;
+using OpenChat.Persistence;
 
 namespace OpenChat.API
 {
@@ -27,6 +31,15 @@ namespace OpenChat.API
         {
             services.AddControllers();
             services.AddCors();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IGuidGenerator, GuidGenerator>();
+            services.AddDbContext<OpenChatDbContext>(options =>
+            {
+                options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OpenChatWorkshopDB;Trusted_Connection=True;");
+                options.EnableSensitiveDataLogging();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

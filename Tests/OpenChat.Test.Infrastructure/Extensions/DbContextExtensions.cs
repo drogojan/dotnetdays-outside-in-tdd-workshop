@@ -10,7 +10,7 @@ namespace OpenChat.Test.Infrastructure.Extensions
     {
         public static void WipeTables(this DbContext dbContext)
         {
-            IEnumerable<string> tablesToDeleteInOrder = new List<string> {  };
+            IEnumerable<string> tablesToDeleteInOrder = new List<string> { "Users" };
 
             var wipeTablesSqlCommand = string.Join(";", tablesToDeleteInOrder.Select(tableName => $"DELETE FROM {tableName}"));
 
