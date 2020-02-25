@@ -19,3 +19,20 @@ The client app should open in the default browser on the http://localhost:3000 a
 
 - Make sure you have installed the .NET Core 3.1 [SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Using Visual Studio 2019 or Visual Studio Code, make sure you can build the OpenChat.sln solution
+
+## Resources
+
+- [The Art of Unit Testing](https://www.amazon.com/Art-Unit-Testing-examples/dp/1617290890)
+- [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627)
+- [Test Driven Development: By Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530)
+- [Unit Testing Principles, Practices, and Patterns](https://www.amazon.com/Unit-Testing-Principles-Practices-Patterns/dp/1617296279)
+- [Codurance Katalist - TDD katas](https://katalyst.codurance.com/)
+- [Outside In TDD - Bank kata](https://katalyst.codurance.com/bank)
+- [Testing and refactoring legacy code](https://www.youtube.com/watch?v=_NnElPO5BU0)
+- [Codemanship - TDD - Jason Gorman](http://www.codemanship.co.uk/tdd_jasongorman_codemanship.pdf)
+- [TDD in Javascript](https://codemanship.wordpress.com/2020/02/22/test-driven-development-in-javascript/)
+- [EfCore.TestSupport](https://github.com/JonPSmith/EfCore.TestSupport)
+
+## Slides
+
+- [Slides](https://1drv.ms/p/s!AsCmpNilWAlAia4rFapFVlpyzMpsjQ?e=i3bhVP)
