@@ -39,4 +39,8 @@ The client app should open in the default browser on the http://localhost:3000 a
 
 ## Finished solution
 
-[Check my Github repo](https://github.com/drogojan/outside-in-tdd-workshop/tree/clean-architecture)
+- [Check my Github repo](https://github.com/drogojan/outside-in-tdd-workshop/tree/clean-architecture)
+
+## Feedback form
+
+If you attended my workshop, please submit your feedback [here](https://dotnetdays.typeform.com/to/C8RLqD)
