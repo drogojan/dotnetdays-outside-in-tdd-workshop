@@ -37,7 +37,10 @@ namespace OpenChat.API
             services.AddScoped<IGuidGenerator, GuidGenerator>();
             services.AddDbContext<OpenChatDbContext>(options =>
             {
-                options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OpenChatWorkshopDB;Trusted_Connection=True;");
+                // options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OpenChatWorkshopDB;Trusted_Connection=True;");
+                //options.UseSqlServer(@"Server=localhost,1401;Database=OpenChatWorkshopDB;User=sa;Password=mssql2017OnDocker");
+                options.UseSqlServer(Configuration.GetConnectionString("OpenChatDB"));
+
                 options.EnableSensitiveDataLogging();
             });
         }

@@ -49,10 +49,16 @@ namespace OpenChat.API.AcceptanceTests
                         .AddEntityFrameworkSqlServer()
                         .BuildServiceProvider();
                 
+                var config = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                
                 // Add DB for acceptance tests
                 services.AddDbContext<OpenChatDbContext>(options =>
                 {
-                    options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OpenChatWorkshopDB_AcceptanceTests;Trusted_Connection=True;");
+                    // options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OpenChatWorkshopDB_AcceptanceTests;Trusted_Connection=True;");
+                    // options.UseSqlServer(@"Server=localhost,1401;Database=OpenChatWorkshopDB_AcceptanceTests;User=sa;Password=mssql2017OnDocker;");
+                    options.UseSqlServer(config.GetConnectionString("OpenChatDB"));
                     options.UseInternalServiceProvider(sqlServerServiceProvider);
                 });
                 
