@@ -19,3 +19,27 @@ The client app should open in the default browser on the http://localhost:3000 a
 
 - Make sure you have installed the .NET Core 3.1 [SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Using Visual Studio 2019 or Visual Studio Code, make sure you can build the OpenChat.sln solution
+
+## Contributing
+- Fork this repo
+- Create an upstream remote
+
+``` 
+git remote add upstream https://github.com/drogojan/dotnetdays-outside-in-tdd-workshop.git
+```
+
+- Sync local `dojo-starting-point` branch with the upstream `dojo-starting-point` branch
+
+
+```
+git checkout dojo-starting-point
+git pull upstream dojo-starting-point
+```
+
+- Create feature branch
+
+```
+git checkout -b <feature-branch-name>
+```
+
+- When done with the implementation, create a pull request from your feature branch to the upstream `dojo-starting-point` branch
