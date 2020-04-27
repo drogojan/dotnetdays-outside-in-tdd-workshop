@@ -1,4 +1,3 @@
-using System.Net.Http;
 using Xunit;
 using Xunit.Abstractions;
 using AspNetCore.Http.Extensions;
@@ -10,9 +9,9 @@ using System;
 
 namespace OpenChat.API.AcceptanceTests
 {
-    public class RegistrationTests : ApiTests
+    public class UsersTests : ApiTests
     {
-        public RegistrationTests(
+        public UsersTests(
             AcceptanceTestFixture testFixture,
             ITestOutputHelper testOutputHelper) 
         : base(testFixture, testOutputHelper)
