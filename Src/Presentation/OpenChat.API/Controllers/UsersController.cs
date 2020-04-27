@@ -9,7 +9,7 @@ namespace OpenChat.API.Controllers
     public class UsersController : ControllerBase
     {
         public Task Post() {
-            throw new Exception();
+            throw new NotImplementedException();
         }
     }
 }
