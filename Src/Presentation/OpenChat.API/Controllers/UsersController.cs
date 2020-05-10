@@ -1,6 +1,6 @@
-using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using OpenChat.Application.Users;
 
 namespace OpenChat.API.Controllers
 {
@@ -8,8 +8,18 @@ namespace OpenChat.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public Task Post() {
-            throw new NotImplementedException();
+        private readonly IUserService _userService;
+
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        public async Task<IActionResult> Post(UserRequest userRequest)
+        {
+            _userService.AddUser(userRequest);
+
+            return Ok();
         }
     }
 }
