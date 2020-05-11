@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace OpenChat.Application.Users
 {
     public interface IUserService
     {
-        void AddUser(UserRequest userRequest);
+        Task<UserResponse> AddUserAsync(UserRequest userRequest);
     }
 }
