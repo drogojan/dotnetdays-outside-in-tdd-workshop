@@ -25,10 +25,11 @@ namespace OpenChat.API.Controllers
             }
             catch (UserNameAlreadyInUseException exception)
             {
-                return new BadRequestObjectResult(new ErrorResponse(exception.Message));
+                var errorResponse = new ErrorResponse(exception.Message);
+                return new BadRequestObjectResult(errorResponse);
             }
 
-            return new CreatedResult("/api/users/" + user.Id, user);
+            return new CreatedResult($"/api/users/{user.Id}", user);
         }
     }
 }
