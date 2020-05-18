@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using OpenChat.API.Models;
 using OpenChat.Application.Users;
 
 namespace OpenChat.API.Controllers
@@ -17,9 +18,18 @@ namespace OpenChat.API.Controllers
 
         public async Task<IActionResult> Post(UserRequest userRequest)
         {
-            _userService.AddUser(userRequest);
+            UserResponse user;
+            try
+            {
+                user = await _userService.AddUserAsync(userRequest);
+            }
+            catch (UserNameAlreadyInUseException exception)
+            {
+                var errorResponse = new ErrorResponse(exception.Message);
+                return new BadRequestObjectResult(errorResponse);
+            }
 
-            return Ok();
+            return new CreatedResult($"/api/users/{user.Id}", user);
         }
     }
 }

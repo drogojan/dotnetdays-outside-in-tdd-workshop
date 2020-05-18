@@ -1,8 +1,10 @@
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OpenChat.API.Controllers;
+using OpenChat.API.Models;
 using OpenChat.Application.Users;
 using Xunit;
 
@@ -14,28 +16,47 @@ namespace OpenChat.API.UnitTests
         public async Task Post_Should_Return_The_Newly_Created_User()
         {
             var userRequest = new UserRequest();
+            userRequest.Username = "username";
+            userRequest.Password = "pwd";
+            userRequest.About = "about";
+
             var expectedResponse = new UserResponse();
+            expectedResponse.Username = userRequest.Username;
+            expectedResponse.About = userRequest.About;
+            expectedResponse.Id = Guid.Empty.ToString();
+
             var userServiceMock = new Mock<IUserService>();
             var userController = new UsersController(userServiceMock.Object);
 
+            userServiceMock.Setup(service => service.AddUserAsync(userRequest)).ReturnsAsync(expectedResponse);
             var response = await userController.Post(userRequest) as CreatedResult;
-            var userResponse = response?.Value as UserResponse;
+            var actualResponse = response?.Value as UserResponse;
 
             response?.Value.Should().BeOfType<UserResponse>();
-            userResponse.Should().BeEquivalentTo(expectedResponse);
+            actualResponse.Should().BeEquivalentTo(expectedResponse);
         }
 
         [Fact]
-        public async Task Post_Should_Invoke_UserService()
+        public async Task Post_Should_Return_Error_Response_If_Username_Already_In_Use()
         {
+            var userRequest = new UserRequest()
+            {
+                Username = "username",
+                Password = "pwd",
+                About = "about"
+            };
             var userServiceMock = new Mock<IUserService>();
-            
-            var userRequest = new UserRequest();
             var userController = new UsersController(userServiceMock.Object);
+            var expectedErrorMessage = "Username already in use.";
+            var expectedException = new UserNameAlreadyInUseException(expectedErrorMessage);
 
-            await userController.Post(userRequest);
+            userServiceMock.Setup(service => service.AddUserAsync(userRequest)).ThrowsAsync(expectedException);
 
-            userServiceMock.Verify(us => us.AddUser(userRequest));
+            var response = await userController.Post(userRequest) as BadRequestObjectResult;
+            var actualResponse = response?.Value as ErrorResponse;
+
+            response?.Value.Should().NotBeNull();
+            actualResponse.Message.Should().Be(expectedErrorMessage);
         }
     }
 }
