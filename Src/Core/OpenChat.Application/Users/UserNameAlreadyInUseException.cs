@@ -4,11 +4,9 @@ namespace OpenChat.Application.Users
 {
     public class UserNameAlreadyInUseException : Exception
     {
-        public override string Message { get; }
 
-        public UserNameAlreadyInUseException(string message)
+        public UserNameAlreadyInUseException(string message) : base(message)
         {
-            Message = message;
         }
     }
 }

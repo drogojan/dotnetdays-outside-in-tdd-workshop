@@ -12,19 +12,6 @@ namespace OpenChat.API.UnitTests
 {
     public class UsersControllerTests
     {
-        // [Fact]
-        // public async Task Post_Should_Invoke_UserService()
-        // {
-        //     var userServiceMock = new Mock<IUserService>();
-
-        //     var userRequest = new UserRequest();
-        //     var userController = new UsersController(userServiceMock.Object);
-
-        //     await userController.Post(userRequest);
-
-        //     userServiceMock.Verify(us => us.AddUserAsync(userRequest));
-        // }
-
         [Fact]
         public async Task Post_Should_Return_The_Newly_Created_User()
         {
@@ -68,7 +55,7 @@ namespace OpenChat.API.UnitTests
             var response = await userController.Post(userRequest) as BadRequestObjectResult;
             var actualResponse = response?.Value as ErrorResponse;
 
-            response?.Value.Should().BeOfType<ErrorResponse>();
+            response?.Value.Should().NotBeNull();
             actualResponse.Message.Should().Be(expectedErrorMessage);
         }
     }
